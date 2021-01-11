@@ -21,17 +21,16 @@ public class Connection extends Thread{
 
     public void run(){
         try {
-            System.out.println("aaa");
             socket = new Socket(ip, port);
-            objectIS = new ObjectInputStream(socket.getInputStream());
             objectOS = new ObjectOutputStream(socket.getOutputStream());
+            objectIS = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void sendMessage(String userName, String password){
-        SendMessage messageThread = new SendMessage(objectOS, userName, password);
+        SendMessage messageThread = new SendMessage(objectOS,objectIS, userName, password);
         messageThread.start();
     }
 }

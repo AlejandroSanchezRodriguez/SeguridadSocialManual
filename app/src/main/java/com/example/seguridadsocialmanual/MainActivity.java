@@ -14,8 +14,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
 
+import Server.Connection;
+import Server.SendMessage;
 import conexionSQLite.SQLiteTabla;
 import conexionSQLite.Utilidades;
 
@@ -25,12 +29,16 @@ public class MainActivity extends AppCompatActivity {
     EditText usuario;
     EditText contrasena;
     Button botonLogin;
+    static Connection serverConnection;
+    public static Boolean logedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        serverConnection = new Connection("192.168.1.67", 5013);
+        serverConnection.start();
 
         login = new ArrayList<>();
         login.add("manual");
@@ -40,17 +48,26 @@ public class MainActivity extends AppCompatActivity {
         usuario = (EditText) findViewById(R.id.view_usuario);
         contrasena = (EditText) findViewById(R.id.view_contrasena);
         botonLogin = (Button)findViewById(R.id.view_botonLogin);
-        usuario.getText();
-        contrasena.getText();
+        //usuario.getText();
+        //contrasena.getText();
 
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), usuario.getText().toString(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), contrasena.getText().toString(), Toast.LENGTH_SHORT).show();
-                if (usuario.getText().toString().equals(login.get(0).toString()) && contrasena.getText().toString().equals(login.get(1).toString())){
+                System.out.println(usuario.getText().toString());
+                System.out.println(contrasena.getText().toString());
+                serverConnection.sendMessage(usuario.getText().toString(), contrasena.getText().toString());
+                if(logedIn){
                     startActivity(new Intent(MainActivity.this, Menu.class));
                 }
+               // SendMessage messageThread = new SendMessage(serverConnection.getObjectOS(), serverConnection.getObjectIS(), usuario.getText().toString(),
+               //         contrasena.getText().toString());
+               // messageThread.start();
+                //Toast.makeText(getApplicationContext(), usuario.getText().toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), contrasena.getText().toString(), Toast.LENGTH_SHORT).show();
+             //   if (usuario.getText().toString().equals(login.get(0).toString()) && contrasena.getText().toString().equals(login.get(1).toString())){
+               //     startActivity(new Intent(MainActivity.this, Menu.class));
+                //}
             }
         });
     }
