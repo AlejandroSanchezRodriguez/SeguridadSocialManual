@@ -6,6 +6,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import Models.DataRequestResponse;
+
 public class Connection extends Thread{
 
     String ip;
@@ -29,8 +31,8 @@ public class Connection extends Thread{
         }
     }
 
-    public void sendMessage(String userName, String password){
-        SendMessage messageThread = new SendMessage(objectOS,objectIS, userName, password);
+    public void sendMessage(DataRequestResponse message){
+        SendMessage messageThread = new SendMessage(objectOS,objectIS,message);
         messageThread.start();
     }
 }

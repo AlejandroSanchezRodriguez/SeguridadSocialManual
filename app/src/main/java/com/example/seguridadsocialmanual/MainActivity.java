@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import Models.DataRequestResponse;
+import Models.LoginRequest;
 import Server.Connection;
 import Server.SendMessage;
 import conexionSQLite.SQLiteTabla;
@@ -46,13 +48,27 @@ public class MainActivity extends AppCompatActivity {
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(usuario.getText().toString());
-                System.out.println(contrasena.getText().toString());
-                serverConnection.sendMessage(usuario.getText().toString(), contrasena.getText().toString());
+
+                DataRequestResponse message = new DataRequestResponse();
+                message.setAction("0002");
+                LoginRequest loginData = new LoginRequest(usuario.getText().toString(), contrasena.getText().toString());
+                message.addData(loginData);
+                serverConnection.sendMessage(message);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 if(logedIn){
                     startActivity(new Intent(MainActivity.this, Menu.class));
+                }else{
+                    Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    public void login(){
+        startActivity(new Intent(MainActivity.this, Menu.class));
     }
 }

@@ -2,8 +2,6 @@ package Server;
 
 import com.example.seguridadsocialmanual.MainActivity;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,24 +13,27 @@ public class SendMessage extends Thread{
 
     ObjectOutputStream objectOS;
     ObjectInputStream objectIS;
-    String userName, password;
+    DataRequestResponse message;
 
-    public SendMessage(ObjectOutputStream objectOS,    ObjectInputStream objectIS, String userName, String password){
+    public SendMessage(ObjectOutputStream objectOS, ObjectInputStream objectIS,DataRequestResponse message){
         this.objectOS = objectOS;
         this.objectIS = objectIS;
-        this.userName = userName;
-        this.password = password;
+        this.message = message;
     }
 
     public void run(){
         try {
-            DataRequestResponse message = new DataRequestResponse();
-            message.setAction("0002");
-            LoginRequest loginData = new LoginRequest(userName, password);
-            message.addData(loginData);
             objectOS.writeObject(message);
-            if(((DataRequestResponse)objectIS.readObject()).getError().equals("")){
-                MainActivity.logedIn = true;
+            DataRequestResponse response = (DataRequestResponse) objectIS.readObject();
+            switch (response.getAction()){
+                case "0002":
+                    if (response.getError().equals("")) {
+                        MainActivity.logedIn = true;
+            }
+                    break;
+                case "0003":
+                    System.out.println(message.getData().get(0));
+                    break;
             }
         } catch (IOException e) {
             e.printStackTrace();
