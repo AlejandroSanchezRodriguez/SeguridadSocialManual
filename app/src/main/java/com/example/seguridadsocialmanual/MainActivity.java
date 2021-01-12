@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         serverConnection = new Connection("192.168.1.68", 5013);
         serverConnection.start();
-
+//
         usuario = (EditText) findViewById(R.id.view_usuario);
         contrasena = (EditText) findViewById(R.id.view_contrasena);
         botonLogin = (Button)findViewById(R.id.view_botonLogin);
