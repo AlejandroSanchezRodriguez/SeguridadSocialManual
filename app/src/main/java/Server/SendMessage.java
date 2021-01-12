@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import Models.ContentRequest;
 import Models.DataRequestResponse;
 import Models.LoginRequest;
 
@@ -29,7 +30,7 @@ public class SendMessage extends Thread{
                 case "0002":
                     if (response.getError().equals("")) {
                         MainActivity.logedIn = true;
-            }
+                    }
                     break;
                 case "0003":
                     System.out.println(message.getData().get(0));
