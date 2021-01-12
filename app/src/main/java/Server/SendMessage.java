@@ -27,7 +27,7 @@ public class SendMessage extends Thread{
     public void run(){
         try {
             DataRequestResponse message = new DataRequestResponse();
-            message.setAction("0001");
+            message.setAction("0002");
             LoginRequest loginData = new LoginRequest(userName, password);
             message.addData(loginData);
             objectOS.writeObject(message);
