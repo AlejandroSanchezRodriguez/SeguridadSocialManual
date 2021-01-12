@@ -12,7 +12,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import Models.Model_es;
+
 public class PrimeraVentana extends AppCompatActivity {
+    Model_es model_es=new Model_es();
+    ListView lv;
 
     private ArrayList<String> arrayParaListView;
 
@@ -20,33 +24,24 @@ public class PrimeraVentana extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primera_ventana);
-        ListView lv = (ListView) findViewById(R.id.view_listView);
-
+        lv = (ListView) findViewById(R.id.view_listView);
+        listindex(model_es.getListVSpanish());
         //añadir aqui los pasos en si de la base de datos
+    }
+    public void listindex(ArrayList<String>textIndex){
+        try {
+            lv.setAdapter(null);
+        }
+        catch (Exception e){
+
+        }
+
         arrayParaListView = new ArrayList<String>();
-        arrayParaListView.add("Cambiar idioma");
-        arrayParaListView.add("Paso 1. Log-in");
-        arrayParaListView.add("Paso 2");
-        arrayParaListView.add("Paso 3");
-        arrayParaListView.add("Paso 4");
-        arrayParaListView.add("Paso 5");
-        arrayParaListView.add("Paso 6");
-        arrayParaListView.add("Paso 7");
-        arrayParaListView.add("Paso 8");
-        arrayParaListView.add("Paso 9");
-        arrayParaListView.add("Paso 10");
-        arrayParaListView.add("Paso 11");
-        arrayParaListView.add("Paso 12");
-        arrayParaListView.add("Paso 13");
-        arrayParaListView.add("Paso 14");
-        arrayParaListView.add("Paso 15");
-
-
-
-
+        for (int i=0;i<9;i++){
+            arrayParaListView.add(textIndex.get(i));
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayParaListView);
         lv.setAdapter(adapter);
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
 
