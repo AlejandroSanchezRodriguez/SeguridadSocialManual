@@ -33,7 +33,6 @@ public class PrimeraVentana extends AppCompatActivity {
             lv.setAdapter(null);
         }
         catch (Exception e){
-
         }
 
         arrayParaListView = new ArrayList<String>();
