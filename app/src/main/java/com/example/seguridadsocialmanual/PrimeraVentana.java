@@ -32,15 +32,29 @@ public class PrimeraVentana extends AppCompatActivity{
         lv = (ListView) findViewById(R.id.view_listView);
         listindex();
         setItemClickLv();
-        setLvAdapter();
+        //setLvAdapter();
         //añadir aqui los pasos en si de la base de datos
     }
 
-    public static void listindex(){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(resultCode);
+        if (resultCode == 2){
+            listindex();
+            //setLvAdapter();
+            setItemClickLv();
+        }
+    }
+
+    public void listindex(){
         try {
-            arrayParaListView.clear();
+            //arrayParaListView.clear();
+            lv.setAdapter(null);
         }
         catch (Exception e){}
+
+
 
         switch (lenguage){
             case "ESP":
@@ -50,6 +64,8 @@ public class PrimeraVentana extends AppCompatActivity{
                 arrayParaListView = model_eng.getListVEnglish();
                 break;
         }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayParaListView);
+        lv.setAdapter(adapter);
     }
     public void setItemClickLv(){
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,10 +73,8 @@ public class PrimeraVentana extends AppCompatActivity{
             //añadir aqui el evento al pulsar los pasos
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    //Toast.makeText(PrimeraVentana.this, "Has pulsado " + arrayParaListView.get(position), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(PrimeraVentana.this, CambiarIdioma.class);
-                    //intent.putExtra("PrimeraVentana", PrimeraVentana.this);
-                    startActivity(intent);
+                    startActivityForResult(intent, 2);
                 }
             }
         });

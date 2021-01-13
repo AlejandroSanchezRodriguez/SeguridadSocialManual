@@ -46,18 +46,23 @@ public class CambiarIdioma extends AppCompatActivity {
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("aaa");
+                int result = 2;
                 if (esp.isChecked()){
-                    System.out.println("es");
-                    PrimeraVentana.lenguage = "ESP";
+                    if(PrimeraVentana.lenguage.equals("ESP")){
+                        result = 1;
+                    }else{
+                        PrimeraVentana.lenguage = "ESP";
+                    }
                 }else if(eng.isChecked()){
-                    System.out.println("en");
-                    PrimeraVentana.lenguage = "ENG";
+                    if(PrimeraVentana.lenguage.equals("ENG")){
+                        result = 1;
+                    }else{
+                        PrimeraVentana.lenguage = "ENG";
+                    }
                 }
-                //primera = (PrimeraVentana) getIntent().getSerializableExtra("PrimeraVentana");
-                //primera.listindex();
+                Intent intent=new Intent();
+                setResult(result,intent);
                 finish();
-                //startActivity(new Intent(CambiarIdioma.this, PrimeraVentana.class));
             }
         });
     }
