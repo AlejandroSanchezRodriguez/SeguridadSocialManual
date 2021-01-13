@@ -72,9 +72,9 @@ public class PrimeraVentana extends AppCompatActivity{
     public void setItemClickLv(){
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            //añadir aqui el evento al pulsar los pasos
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
+                    //si se pulsa el primer elemento se inicia la actividad de cambiar idioma
                     Intent intent = new Intent(PrimeraVentana.this, CambiarIdioma.class);
                     startActivityForResult(intent, 2);
                 }else{
