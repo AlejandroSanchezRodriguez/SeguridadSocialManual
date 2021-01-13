@@ -13,18 +13,18 @@ import android.widget.RadioGroup;
 import Models.Model_eng;
 import Models.Model_es;
 
-public class CambiarIdioma extends AppCompatActivity {
+public class ChangeLanguaje extends AppCompatActivity {
     Model_es model_es;
     Model_eng model_eng;
     RadioGroup rg;
     RadioButton esp,eng;
     Button changeLanguage;
-    PrimeraVentana primera;
+    FirstWindow primera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cambiar_idioma);
+        setContentView(R.layout.activity_change_languaje);
 
         DisplayMetrics medidasVentana = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(medidasVentana);
@@ -47,16 +47,16 @@ public class CambiarIdioma extends AppCompatActivity {
             public void onClick(View view) {
                 int result = 2;
                 if (esp.isChecked()){
-                    if(PrimeraVentana.language.equals("ESP")){
+                    if(FirstWindow.language.equals("ESP")){
                         result = 1;
                     }else{
-                        PrimeraVentana.language = "ESP";
+                        FirstWindow.language = "ESP";
                     }
                 }else if(eng.isChecked()){
-                    if(PrimeraVentana.language.equals("ENG")){
+                    if(FirstWindow.language.equals("ENG")){
                         result = 1;
                     }else{
-                        PrimeraVentana.language = "ENG";
+                        FirstWindow.language = "ENG";
                     }
                 }
                 Intent intent=new Intent();

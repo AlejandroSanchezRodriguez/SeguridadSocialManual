@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="800px"
     android:layout_height="1000px"
-    android:background="@drawable/fondo"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".CambiarIdioma">
+    tools:context=".ChangeLanguaje">
 
     <Button
         android:id="@+id/view_botonCambiarIdioma"

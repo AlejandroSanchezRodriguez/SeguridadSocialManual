@@ -3,23 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/main_botonManual"
+        android:id="@+id/main_manualButton"
         android:layout_width="157dp"
         android:layout_height="107dp"
         android:text="Manual"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_botonDemo"
+        app:layout_constraintBottom_toTopOf="@+id/main_demoButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.478" />
 
     <Button
-        android:id="@+id/main_botonDemo"
+        android:id="@+id/main_demoButton"
         android:layout_width="157dp"
         android:layout_height="107dp"
         android:text="Demo"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/main_botonAD"
+        android:id="@+id/main_aboutButton"
         android:layout_width="157dp"
         android:layout_height="107dp"
         android:text="Acerca de"
@@ -38,6 +38,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_botonDemo" />
+        app:layout_constraintTop_toBottomOf="@+id/main_demoButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

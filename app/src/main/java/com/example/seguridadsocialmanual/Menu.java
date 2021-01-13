@@ -9,35 +9,35 @@ import android.widget.Button;
 
 public class Menu extends AppCompatActivity {
 
-    Button botonManual;
-    Button botonDemo;
-    Button botonAD;
+    Button manualButton;
+    Button demoButton;
+    Button aboutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        botonManual = (Button) findViewById(R.id.main_botonManual);
-        botonDemo = (Button) findViewById(R.id.main_botonDemo);
-        botonAD = (Button) findViewById(R.id.main_botonAD);
+        manualButton = (Button) findViewById(R.id.main_manualButton);
+        demoButton = (Button) findViewById(R.id.main_demoButton);
+        aboutButton = (Button) findViewById(R.id.main_aboutButton);
 
-        botonManual.setOnClickListener(new View.OnClickListener() {
+        manualButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Menu.this, PrimeraVentana.class));
+                startActivity(new Intent(Menu.this, FirstWindow.class));
             }
         });
-        botonDemo.setOnClickListener(new View.OnClickListener() {
+        demoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        botonAD.setOnClickListener(new View.OnClickListener() {
+        aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Menu.this, AcercaDe.class));
+                startActivity(new Intent(Menu.this, About.class));
             }
         });
 

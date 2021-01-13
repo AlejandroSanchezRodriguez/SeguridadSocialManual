@@ -8,13 +8,14 @@ public class Model_eng {
         listVEnglish= new ArrayList<>();
         listVEnglish.add("Change Language");
         listVEnglish.add("1. Login");
-        listVEnglish.add("2. Upload Files");
-        listVEnglish.add("3. Rename Files");
-        listVEnglish.add("4. Delete Files or Directories");
-        listVEnglish.add("5. Create Directory");
-        listVEnglish.add("6. Send E-mail");
-        listVEnglish.add("7. Receive E-mail");
-        listVEnglish.add("8. About");
+        listVEnglish.add("2. Options Menu");
+        listVEnglish.add("3. Upload Files");
+        listVEnglish.add("4. Rename Files");
+        listVEnglish.add("5. Delete Files or Directories");
+        listVEnglish.add("6. Create Directory");
+        listVEnglish.add("7. Send E-mail");
+        listVEnglish.add("8. Receive E-mail");
+        listVEnglish.add("9. About");
     }
 
     public ArrayList<String> getListVEnglish() {

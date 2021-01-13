@@ -12,13 +12,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Manual_Page"></activity>
         <activity
-            android:name=".AcercaDe"
+            android:name=".About"
             android:theme="@style/AppTheme.TemaPopUp" />
         <activity android:name=".Menu" />
-        <activity android:name=".PrimeraVentana" />
+        <activity android:name=".FirstWindow" />
         <activity
-            android:name=".CambiarIdioma"
-            android:parentActivityName=".PrimeraVentana"
+            android:name=".ChangeLanguaje"
+            android:parentActivityName=".FirstWindow"
             android:theme="@style/AppTheme.TemaPopUp" />
         <activity android:name=".MainActivity">
             <intent-filter>

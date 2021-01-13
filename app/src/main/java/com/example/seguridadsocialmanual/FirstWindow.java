@@ -11,14 +11,12 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import Models.ContentModel;
 import Models.ContentRequest;
 import Models.DataRequestResponse;
-import Models.LoginRequest;
 import Models.Model_eng;
 import Models.Model_es;
 
-public class PrimeraVentana extends AppCompatActivity{
+public class FirstWindow extends AppCompatActivity{
     static Model_es model_es;
     static Model_eng model_eng;
     static ListView lv;
@@ -28,7 +26,7 @@ public class PrimeraVentana extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_primera_ventana);
+        setContentView(R.layout.activity_first_window);
         model_es = new Model_es();
         model_eng=new Model_eng();
         lv = (ListView) findViewById(R.id.view_listView);
@@ -75,7 +73,7 @@ public class PrimeraVentana extends AppCompatActivity{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     //si se pulsa el primer elemento se inicia la actividad de cambiar idioma
-                    Intent intent = new Intent(PrimeraVentana.this, CambiarIdioma.class);
+                    Intent intent = new Intent(FirstWindow.this, ChangeLanguaje.class);
                     startActivityForResult(intent, 2);
                 }else{
                     //send a request to server to get the content of the specified page in the current language.
@@ -85,7 +83,7 @@ public class PrimeraVentana extends AppCompatActivity{
                     message.addData(contentRequest);
                     MainActivity.serverConnection.sendMessage(message);
                     Manual_Page.tittle = arrayParaListView.get(position).toString();
-                    startActivity(new Intent(PrimeraVentana.this, Manual_Page.class));
+                    startActivity(new Intent(FirstWindow.this, Manual_Page.class));
                 }
             }
         });

@@ -15,9 +15,9 @@ import Server.Connection;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText usuario;
-    EditText contrasena;
-    Button botonLogin;
+    EditText user;
+    EditText password;
+    Button loginButton;
     static Connection serverConnection;
     public static Boolean logedIn = false;
 
@@ -26,22 +26,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PrimeraVentana.language = "ESP";
+        FirstWindow.language = "ESP";
 
         serverConnection = new Connection("192.168.1.68", 5013);
         serverConnection.start();
 
-        usuario = (EditText) findViewById(R.id.view_usuario);
-        contrasena = (EditText) findViewById(R.id.view_contrasena);
-        botonLogin = (Button)findViewById(R.id.view_botonLogin);
+        user = (EditText) findViewById(R.id.view_usuario);
+        password = (EditText) findViewById(R.id.view_contrasena);
+        loginButton = (Button)findViewById(R.id.view_botonLogin);
 
-        botonLogin.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 DataRequestResponse message = new DataRequestResponse();
                 message.setAction("0002");
-                LoginRequest loginData = new LoginRequest(usuario.getText().toString(), contrasena.getText().toString());
+                LoginRequest loginData = new LoginRequest(user.getText().toString(), password.getText().toString());
                 message.addData(loginData);
                 serverConnection.sendMessage(message);
                 try {
