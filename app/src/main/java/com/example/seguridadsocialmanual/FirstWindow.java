@@ -17,11 +17,11 @@ import Models.Model_eng;
 import Models.Model_es;
 
 public class FirstWindow extends AppCompatActivity{
-    static Model_es model_es;
-    static Model_eng model_eng;
-    static ListView lv;
+    Model_es model_es;
+    Model_eng model_eng;
+    ListView lv;
     static String language;
-    private static ArrayList<String> arrayParaListView;
+    private ArrayList<String> arrayParaListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,6 @@ public class FirstWindow extends AppCompatActivity{
         lv = (ListView) findViewById(R.id.view_listView);
         listindex();
         setItemClickLv();
-        //setLvAdapter();
         //añadir aqui los pasos en si de la base de datos
     }
 
@@ -42,8 +41,9 @@ public class FirstWindow extends AppCompatActivity{
         System.out.println(resultCode);
         if (resultCode == 2){
             listindex();
-            //setLvAdapter();
             setItemClickLv();
+            Menu.setButtonsText();
+            About.setText();
         }
     }
 
@@ -87,10 +87,5 @@ public class FirstWindow extends AppCompatActivity{
                 }
             }
         });
-    }
-
-    public void setLvAdapter(){
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayParaListView);
-        lv.setAdapter(adapter);
     }
 }

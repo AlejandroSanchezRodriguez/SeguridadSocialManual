@@ -45,6 +45,4 @@ public class SendMessage extends Thread{
             e.printStackTrace();
         }
     }
-
-
 }

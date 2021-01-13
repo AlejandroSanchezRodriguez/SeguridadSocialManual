@@ -1,1 +1,8 @@
-<resources></resources>
+<resources>
+    <string name="name1">Alejandro Sánchez Rodríguez</string>
+    <string name="name2">Pablo Mérida Egea</string>
+    <string name="name3">Juan Manuel Izquierdo</string>
+    <string name="name4">Vitaliy Bay</string>
+    <string name="copyright">Copyright © (2020-2021)</string>
+    <string name="version">Version 1.0</string>
+</resources>
