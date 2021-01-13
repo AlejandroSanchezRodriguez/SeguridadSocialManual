@@ -1,7 +1,6 @@
 package com.example.seguridadsocialmanual;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.solver.state.State;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,16 +47,16 @@ public class CambiarIdioma extends AppCompatActivity {
             public void onClick(View view) {
                 int result = 2;
                 if (esp.isChecked()){
-                    if(PrimeraVentana.lenguage.equals("ESP")){
+                    if(PrimeraVentana.language.equals("ESP")){
                         result = 1;
                     }else{
-                        PrimeraVentana.lenguage = "ESP";
+                        PrimeraVentana.language = "ESP";
                     }
                 }else if(eng.isChecked()){
-                    if(PrimeraVentana.lenguage.equals("ENG")){
+                    if(PrimeraVentana.language.equals("ENG")){
                         result = 1;
                     }else{
-                        PrimeraVentana.lenguage = "ENG";
+                        PrimeraVentana.language = "ENG";
                     }
                 }
                 Intent intent=new Intent();

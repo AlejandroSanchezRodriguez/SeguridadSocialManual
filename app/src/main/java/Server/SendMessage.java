@@ -1,11 +1,13 @@
 package Server;
 
 import com.example.seguridadsocialmanual.MainActivity;
+import com.example.seguridadsocialmanual.Manual_Page;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import Models.ContentModel;
 import Models.ContentRequest;
 import Models.DataRequestResponse;
 import Models.LoginRequest;
@@ -33,7 +35,8 @@ public class SendMessage extends Thread{
                     }
                     break;
                 case "0003":
-                    System.out.println(message.getData().get(0));
+                    System.out.println(((ContentModel)response.getData().get(0)).getText());
+                    Manual_Page.content = ((ContentModel)response.getData().get(0)).getText();
                     break;
             }
         } catch (IOException e) {

@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
+import Models.ContentModel;
+import Models.ContentRequest;
+import Models.DataRequestResponse;
+import Models.LoginRequest;
 import Models.Model_eng;
 import Models.Model_es;
 
@@ -20,7 +22,7 @@ public class PrimeraVentana extends AppCompatActivity{
     static Model_es model_es;
     static Model_eng model_eng;
     static ListView lv;
-    static String lenguage;
+    static String language;
     private static ArrayList<String> arrayParaListView;
 
     @Override
@@ -56,7 +58,7 @@ public class PrimeraVentana extends AppCompatActivity{
 
 
 
-        switch (lenguage){
+        switch (language){
             case "ESP":
                 arrayParaListView = model_es.getListVSpanish();
                 break;
@@ -75,6 +77,15 @@ public class PrimeraVentana extends AppCompatActivity{
                 if (position == 0) {
                     Intent intent = new Intent(PrimeraVentana.this, CambiarIdioma.class);
                     startActivityForResult(intent, 2);
+                }else{
+                    //send a request to server to get the content of the specified page in the current language.
+                    DataRequestResponse message = new DataRequestResponse();
+                    message.setAction("0003");
+                    ContentRequest contentRequest = new ContentRequest(position,language);
+                    message.addData(contentRequest);
+                    MainActivity.serverConnection.sendMessage(message);
+                    Manual_Page.tittle = arrayParaListView.get(position).toString();
+                    startActivity(new Intent(PrimeraVentana.this, Manual_Page.class));
                 }
             }
         });
