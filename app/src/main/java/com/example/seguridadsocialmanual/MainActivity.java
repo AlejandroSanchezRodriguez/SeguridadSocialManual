@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PrimeraVentana.lenguage = "ESP";
+
         serverConnection = new Connection("192.168.1.68", 5013);
         serverConnection.start();
 //

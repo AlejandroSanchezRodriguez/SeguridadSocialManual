@@ -3,8 +3,9 @@ package Models;
 import java.util.ArrayList;
 
 public class Model_es {
-    ArrayList<String>listVSpanish= new ArrayList<>();
+    ArrayList<String>listVSpanish;
     public Model_es(){
+        listVSpanish= new ArrayList<>();
         listVSpanish.add("Cambiar idioma");
         listVSpanish.add("1. Login");
         listVSpanish.add("2. Subir Ficheros");

@@ -17,7 +17,8 @@
         <activity android:name=".PrimeraVentana" />
         <activity
             android:name=".CambiarIdioma"
-            android:theme="@style/AppTheme.TemaPopUp" />
+            android:theme="@style/AppTheme.TemaPopUp"
+            android:parentActivityName=".PrimeraVentana"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

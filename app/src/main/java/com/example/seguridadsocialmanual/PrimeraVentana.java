@@ -10,13 +10,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import Models.Model_eng;
 import Models.Model_es;
 
-public class PrimeraVentana extends AppCompatActivity {
-    Model_es model_es=new Model_es();
+public class PrimeraVentana extends AppCompatActivity implements Serializable {
+    Model_es model_es;
+    Model_eng model_eng;
     ListView lv;
+    static String lenguage;
 
     private ArrayList<String> arrayParaListView;
 
@@ -24,33 +28,40 @@ public class PrimeraVentana extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primera_ventana);
+        model_es = new Model_es();
+        model_eng=new Model_eng();
         lv = (ListView) findViewById(R.id.view_listView);
-        listindex(model_es.getListVSpanish());
+        listindex();
         //añadir aqui los pasos en si de la base de datos
     }
-    public void listindex(ArrayList<String>textIndex){
+
+    public void listindex(){
         try {
-            lv.setAdapter(null);
+            arrayParaListView.clear();
+            //lv.setAdapter(null);
         }
-        catch (Exception e){
-            
+        catch (Exception e){}
+
+        switch (lenguage){
+            case "ESP":
+                arrayParaListView = this.model_es.getListVSpanish();
+                break;
+            case "ENG":
+                arrayParaListView = this.model_eng.getListVEnglish();
+                break;
         }
 
-        arrayParaListView = new ArrayList<String>();
-        for (int i=0;i<9;i++){
-            arrayParaListView.add(textIndex.get(i));
-        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayParaListView);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-
             //añadir aqui el evento al pulsar los pasos
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (arrayParaListView.get(position).toString() == "Cambiar idioma") {
+                if (position == 0) {
                     //Toast.makeText(PrimeraVentana.this, "Has pulsado " + arrayParaListView.get(position), Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(PrimeraVentana.this, CambiarIdioma.class));
-
+                    Intent intent = new Intent(PrimeraVentana.this, CambiarIdioma.class);
+                    //intent.putExtra("PrimeraVentana", PrimeraVentana.this);
+                    startActivity(intent);
                 }
             }
         });

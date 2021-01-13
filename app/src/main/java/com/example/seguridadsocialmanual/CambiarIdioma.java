@@ -3,6 +3,7 @@ package com.example.seguridadsocialmanual;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.state.State;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -14,8 +15,8 @@ import Models.Model_eng;
 import Models.Model_es;
 
 public class CambiarIdioma extends AppCompatActivity {
-    Model_es model_es= new Model_es();
-    Model_eng model_eng=new Model_eng();
+    Model_es model_es;
+    Model_eng model_eng;
     RadioGroup rg;
     RadioButton esp,eng;
     Button changeLanguage;
@@ -39,18 +40,24 @@ public class CambiarIdioma extends AppCompatActivity {
         eng=findViewById(R.id.view_radioButtonIngles);
         changeLanguage=findViewById(R.id.view_botonCambiarIdioma);
         eventButon();
-
-
     }
+
     public void eventButon(){
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (esp.isSelected()){
-                    primera.listindex(model_es.getListVSpanish());
-                }else if(eng.isSelected()){
-                    primera.listindex(model_eng.getListVEnglish());
+                System.out.println("aaa");
+                if (esp.isChecked()){
+                    System.out.println("es");
+                    PrimeraVentana.lenguage = "ESP";
+                }else if(eng.isChecked()){
+                    System.out.println("en");
+                    PrimeraVentana.lenguage = "ENG";
                 }
+                //primera = (PrimeraVentana) getIntent().getSerializableExtra("PrimeraVentana");
+                //primera.listindex();
+                finish();
+                //startActivity(new Intent(CambiarIdioma.this, PrimeraVentana.class));
             }
         });
     }
