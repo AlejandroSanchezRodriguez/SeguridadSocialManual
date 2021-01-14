@@ -44,6 +44,7 @@ public class FirstWindow extends AppCompatActivity{
             setItemClickLv();
             Menu.setButtonsText();
             if(About.loaded)    About.setText();
+            if(DemoMenu.loaded) DemoMenu.setText();
         }
     }
 

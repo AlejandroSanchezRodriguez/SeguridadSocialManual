@@ -60,7 +60,7 @@ public class Menu extends AppCompatActivity {
         demoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(Menu.this, DemoMenu.class));
             }
         });
         aboutButton.setOnClickListener(new View.OnClickListener() {
