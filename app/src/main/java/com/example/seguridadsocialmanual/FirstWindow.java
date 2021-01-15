@@ -28,16 +28,17 @@ public class FirstWindow extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_window);
+        //al abrirse la actividad se inicializan los modelos, el listview y se rellena el listview con el contenido del modelo español que es el idioma por defecto
         model_es = new Model_es();
         model_eng=new Model_eng();
         lv = (ListView) findViewById(R.id.view_listView);
         listindex();
         setItemClickLv();
-        //añadir aqui los pasos en si de la base de datos
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        //meto
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println(resultCode);
         if (resultCode == 2){
@@ -56,9 +57,6 @@ public class FirstWindow extends AppCompatActivity{
             lv.setAdapter(null);
         }
         catch (Exception e){}
-
-
-
         switch (language){
             case "ESP":
                 arrayParaListView = model_es.getListVSpanish();
@@ -86,6 +84,11 @@ public class FirstWindow extends AppCompatActivity{
                     message.addData(contentRequest);
                     MainActivity.serverConnection.sendMessage(message);
                     Manual_Page.tittle = arrayParaListView.get(position).toString();
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     startActivity(new Intent(FirstWindow.this, Manual_Page.class));
                 }
             }

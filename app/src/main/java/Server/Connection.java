@@ -15,6 +15,7 @@ public class Connection extends Thread{
     Socket socket;
     ObjectInputStream objectIS;
     ObjectOutputStream objectOS;
+    public boolean conected = false;
 
     public Connection(String ip, int port){
         this.ip = ip;
@@ -26,6 +27,7 @@ public class Connection extends Thread{
             socket = new Socket(ip, port);
             objectOS = new ObjectOutputStream(socket.getOutputStream());
             objectIS = new ObjectInputStream(socket.getInputStream());
+            conected = true;
         } catch (IOException e) {
             e.printStackTrace();
         }

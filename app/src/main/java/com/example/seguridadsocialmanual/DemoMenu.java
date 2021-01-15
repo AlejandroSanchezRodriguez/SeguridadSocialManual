@@ -71,21 +71,21 @@ public class DemoMenu extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playYoutubeVideo("7H2KL4JhX6Q");
+                playYoutubeVideo("b68tIomyNA0");
             }
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playYoutubeVideo("dQw4w9WgXcQ");
+                playYoutubeVideo("hM-WceuILRE");
             }
         });
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playYoutubeVideo("GgQ3qm32vac");
+                playYoutubeVideo("BzzA95Hnm4s&t=2s");
             }
         });
     }

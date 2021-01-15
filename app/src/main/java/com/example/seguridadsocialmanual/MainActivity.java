@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirstWindow.language = "ESP";
 
-        serverConnection = new Connection("192.168.1.68", 5013);
+        serverConnection = new Connection("192.168.1.67", 5013);
         serverConnection.start();
 
         user = (EditText) findViewById(R.id.view_usuario);
@@ -44,15 +44,19 @@ public class MainActivity extends AppCompatActivity {
                 message.setAction("0002");
                 LoginRequest loginData = new LoginRequest(user.getText().toString(), password.getText().toString());
                 message.addData(loginData);
-                serverConnection.sendMessage(message);
+                if(serverConnection.conected){
+                    serverConnection.sendMessage(message);
+                }else{
+                    Toast.makeText(MainActivity.this, "Error de conexión con servidor", Toast.LENGTH_SHORT).show();
+                }
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 if(logedIn){
                     startActivity(new Intent(MainActivity.this, Menu.class));
-                }else{
+                }else if(serverConnection.conected){
                     Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show();
                 }
             }
