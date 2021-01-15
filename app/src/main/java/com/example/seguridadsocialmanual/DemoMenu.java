@@ -78,14 +78,14 @@ public class DemoMenu extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playYoutubeVideo("hM-WceuILRE");
+                playYoutubeVideo("BzzA95Hnm4s&t=2s");
             }
         });
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playYoutubeVideo("BzzA95Hnm4s&t=2s");
+                playYoutubeVideo("hM-WceuILRE");
             }
         });
     }
