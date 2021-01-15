@@ -13,6 +13,7 @@ import android.widget.TextView;
 import Models.Demo_Menu.Demo_Menu_Model_eng;
 import Models.Demo_Menu.Demo_Menu_Model_es;
 
+//clase encargada de la demo de la aplicacion
 public class DemoMenu extends AppCompatActivity {
 
     private static Demo_Menu_Model_es model_es;
@@ -38,6 +39,7 @@ public class DemoMenu extends AppCompatActivity {
         setListeners();
     }
 
+    //este metodo se encarga de que la aplicacion cambie el idioma correctamente
     public static void setText(){
         String[] values;
         switch (FirstWindow.language){

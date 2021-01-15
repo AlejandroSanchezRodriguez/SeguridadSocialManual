@@ -16,6 +16,7 @@ import Models.DataRequestResponse;
 import Models.Model_eng;
 import Models.Model_es;
 
+//en esta clase esta el listview con los pasos del manual
 public class FirstWindow extends AppCompatActivity{
     Model_es model_es;
     Model_eng model_eng;
@@ -48,6 +49,7 @@ public class FirstWindow extends AppCompatActivity{
         }
     }
 
+    //este metodo rellena el listview
     public void listindex(){
         try {
             //arrayParaListView.clear();

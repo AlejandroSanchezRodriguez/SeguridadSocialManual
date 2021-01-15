@@ -13,6 +13,7 @@ import Models.DataRequestResponse;
 import Models.LoginRequest;
 import Server.Connection;
 
+//clase encargada de las conexiones, el login, y el splash
 public class MainActivity extends AppCompatActivity {
 
     EditText user;

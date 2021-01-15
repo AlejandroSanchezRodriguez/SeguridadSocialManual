@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 
 import Models.Model_eng;
 import Models.Model_es;
-
+// Esta clase crea las variable de los objetos de la ventana emergente de cambiar idio,a
 public class ChangeLanguaje extends AppCompatActivity {
     Model_es model_es;
     Model_eng model_eng;
@@ -41,6 +41,7 @@ public class ChangeLanguaje extends AppCompatActivity {
         eventButon();
     }
 
+    //clase que le da evento a los radiobutton y boton de dicha ventana emergente
     public void eventButon(){
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override

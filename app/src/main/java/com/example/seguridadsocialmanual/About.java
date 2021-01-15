@@ -9,6 +9,7 @@ import android.widget.TextView;
 import Models.About_Page.AboutPage_Model_eng;
 import Models.About_Page.AboutPage_Model_es;
 
+//clase encargada del mensaje emergente "Acerca De"
 public class About extends AppCompatActivity {
 
     static TextView tv1, tv2;
